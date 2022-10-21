@@ -4,6 +4,7 @@ import { categoriesController } from './controllers/categoriesController';
 import { coursesController } from './controllers/coursesController';
 import { episodesController } from './controllers/episodesController';
 import { favoritesController } from './controllers/favoritesController';
+import { likesController } from './controllers/likesController';
 import { ensureAuth, ensureAuthViaQuery } from './middlewares/auth';
 
 
@@ -25,5 +26,8 @@ router.get('/episodes/stream', ensureAuthViaQuery, episodesController.stream)
 router.post('/favorites', ensureAuth, favoritesController.save)
 router.get('/favorites',ensureAuth, favoritesController.index)
 router.delete('/favorites/:id',ensureAuth, favoritesController.delete)
+
+router.post('/likes', ensureAuth, likesController.save)
+router.delete('/likes/:id', ensureAuth, likesController.delete)
 
 export {router}
